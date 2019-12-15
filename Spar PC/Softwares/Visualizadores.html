@@ -1,0 +1,566 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Visualizadores</title><style>
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	opacity: 0.5;
+}
+
+.sans { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, KaiTi, STKaiTi, '华文楷体', KaiTi_GB2312, '楷体_GB2312', serif; }
+.mono { font-family: Nitti, 'Microsoft YaHei', '微软雅黑', monospace; }
+.pdf .sans { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .code { font-family: Source Code Pro, 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, KaiTi, STKaiTi, '华文楷体', KaiTi_GB2312, '楷体_GB2312', serif, 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC', 'Noto Sans CJK KR'; }
+
+.pdf .mono { font-family: PT Mono, Nitti, 'Microsoft YaHei', '微软雅黑', monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC', 'Noto Sans Mono CJK KR'; }
+
+.highlight-default {
+}
+.highlight-gray {
+	color: rgb(155,154,151);
+}
+.highlight-brown {
+	color: rgb(100,71,58);
+}
+.highlight-orange {
+	color: rgb(217,115,13);
+}
+.highlight-yellow {
+	color: rgb(223,171,1);
+}
+.highlight-teal {
+	color: rgb(15,123,108);
+}
+.highlight-blue {
+	color: rgb(11,110,153);
+}
+.highlight-purple {
+	color: rgb(105,64,165);
+}
+.highlight-pink {
+	color: rgb(173,26,114);
+}
+.highlight-red {
+	color: rgb(224,62,62);
+}
+.highlight-gray_background {
+	background: rgb(235,236,237);
+}
+.highlight-brown_background {
+	background: rgb(233,229,227);
+}
+.highlight-orange_background {
+	background: rgb(250,235,221);
+}
+.highlight-yellow_background {
+	background: rgb(251,243,219);
+}
+.highlight-teal_background {
+	background: rgb(221,237,234);
+}
+.highlight-blue_background {
+	background: rgb(221,235,241);
+}
+.highlight-purple_background {
+	background: rgb(234,228,242);
+}
+.highlight-pink_background {
+	background: rgb(244,223,235);
+}
+.highlight-red_background {
+	background: rgb(251,228,228);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(55, 53, 47, 0.6);
+	fill: rgba(55, 53, 47, 0.6);
+}
+.block-color-brown {
+	color: rgb(100,71,58);
+	fill: rgb(100,71,58);
+}
+.block-color-orange {
+	color: rgb(217,115,13);
+	fill: rgb(217,115,13);
+}
+.block-color-yellow {
+	color: rgb(223,171,1);
+	fill: rgb(223,171,1);
+}
+.block-color-teal {
+	color: rgb(15,123,108);
+	fill: rgb(15,123,108);
+}
+.block-color-blue {
+	color: rgb(11,110,153);
+	fill: rgb(11,110,153);
+}
+.block-color-purple {
+	color: rgb(105,64,165);
+	fill: rgb(105,64,165);
+}
+.block-color-pink {
+	color: rgb(173,26,114);
+	fill: rgb(173,26,114);
+}
+.block-color-red {
+	color: rgb(224,62,62);
+	fill: rgb(224,62,62);
+}
+.block-color-gray_background {
+	background: rgb(235,236,237);
+}
+.block-color-brown_background {
+	background: rgb(233,229,227);
+}
+.block-color-orange_background {
+	background: rgb(250,235,221);
+}
+.block-color-yellow_background {
+	background: rgb(251,243,219);
+}
+.block-color-teal_background {
+	background: rgb(221,237,234);
+}
+.block-color-blue_background {
+	background: rgb(221,235,241);
+}
+.block-color-purple_background {
+	background: rgb(234,228,242);
+}
+.block-color-pink_background {
+	background: rgb(244,223,235);
+}
+.block-color-red_background {
+	background: rgb(251,228,228);
+}
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="c75f8655-d47f-46a6-ab31-a8d52e2beafd" class="page sans"><header><img class="page-cover-image" src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb" style="object-position:center 50%"/><div class="page-header-icon page-header-icon-with-cover"><span class="icon">👁</span></div><h1 class="page-title">Visualizadores</h1></header><div class="page-body"><blockquote id="02319f9d-256c-4774-85f4-56b51746da41" class="">Nessa seção você irá encontrar Softwares para Visualizar suas midias</blockquote><figure id="fa618dca-3a95-41ba-8d19-7b4b910c1ef7"><div class="bookmark source"><a href="https://daumpotplayer.com">PotPlayer</a><br/><a class="bookmark-href" href="https://daumpotplayer.com">https://daumpotplayer.com</a></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="639098d1-4725-46c9-9afe-7a55ded18d26"><div style="font-size:1.5em"><img class="icon" src="https://softcatalog.info/sites/default/files/styles/program_logo/public/program/logo/daum_potplayer_dlya_windows-logo.png"/></div><div style="width:100%">PotPlayer</div></figure><figure id="9b3991d2-ec53-4438-865d-c2ea3df1a283"><div class="bookmark source"><a href="https://www.plex.tv">Media Server | Plex allows you to stream video smarter.</a><br/><a class="bookmark-href" href="https://www.plex.tv">https://www.plex.tv</a></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="495cb205-3051-4c07-81f6-a5cd975a1c7d"><div style="font-size:1.5em"><img class="icon" src="http://www.plexserver19.com/wp-content/uploads/2018/09/pms-icon-800x800.png"/></div><div style="width:100%">Plex</div></figure><figure id="de81092d-ee63-4ea3-8129-3f7bf17308c0"><div class="bookmark source"><a href="https://getmusicbee.com">MusicBee - The Ultimate Music Manager and Player</a><br/><a class="bookmark-href" href="https://getmusicbee.com">https://getmusicbee.com</a></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="556353c5-ed19-4c4b-8c75-04a6714abe93"><div style="font-size:1.5em"><img class="icon" src="https://getmusicbee.com/img/musicbee.png"/></div><div style="width:100%">Music Bee</div></figure><figure id="22e33a2c-ad5c-4ddb-86b4-2f4e7d06a3fd"><div class="bookmark source"><a href="https://musicplus.io">MusicPlus - Music For Everyone</a><br/><a class="bookmark-href" href="https://musicplus.io">https://musicplus.io</a></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="2439ffc4-6908-40a1-8ddf-c21a84f23b71"><div style="font-size:1.5em"><img class="icon" src="https://avatars2.githubusercontent.com/u/51906296?s=460&amp;v=4"/></div><div style="width:100%">MusicPlus</div></figure><figure id="580c5d69-a6bf-4ca6-b48a-88793b2c9cf1"><div class="bookmark source"><a href="https://www.odio.io">odio</a><br/><a class="bookmark-href" href="https://www.odio.io">https://www.odio.io</a></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="48fd3283-7cf9-41b4-af62-a4e2e3f34e3c"><div style="font-size:1.5em"><img class="icon" src="https://www.odio.io/imgs/logo_nav.png"/></div><div style="width:100%">Odio</div></figure><figure id="40e48268-f6dd-486d-9537-ef3fb37521f1"><div class="bookmark source"><a href="https://www.spotify.com/br/">Música para todos.</a><br/><a class="bookmark-href" href="https://www.spotify.com/br/">https://www.spotify.com/br/</a></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="4980f548-2546-4c00-8db1-c88272b55c5a"><div style="font-size:1.5em"><img class="icon" src="https://lh3.googleusercontent.com/UrY7BAZ-XfXGpfkeWg0zCCeo-7ras4DCoRalC_WXXWTK9q5b0Iw7B0YQMsVxZaNB7DM"/></div><div style="width:100%">Spotify</div></figure><figure id="5a882de8-5ed5-4291-9061-01c98bb4aa7f"><div class="bookmark source"><a href="https://www.microsoft.com/en-us/p/quick-pad-uwp-notepad/9pdlwqhtlsv3#activetab=pivot:overviewtab">Get Quick Pad - UWP Notepad - Microsoft Store</a><br/><a class="bookmark-href" href="https://www.microsoft.com/en-us/p/quick-pad-uwp-notepad/9pdlwqhtlsv3#activetab=pivot:overviewtab">https://www.microsoft.com/en-us/p/quick-pad-uwp-notepad/9pdlwqhtlsv3#activetab=pivot:overviewtab</a></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="f14001ea-9744-4294-a249-7a1c007029e3"><div style="font-size:1.5em"><img class="icon" src="https://store-images.s-microsoft.com/image/apps.14793.14151964118482152.7761824f-4c04-48c1-afce-f57dd86c1c5f.f087180a-f665-4694-999e-ffc114b570db?mode=scale&amp;q=90&amp;h=300&amp;w=300"/></div><div style="width:100%">Quick Pad</div></figure><figure id="80340338-ada6-41a6-8909-fc1b5ecfa9d6"><div class="bookmark source"><a href="https://hundredrabbits.itch.io/left">Left</a><br/><a class="bookmark-href" href="https://hundredrabbits.itch.io/left">https://hundredrabbits.itch.io/left</a></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="18898d91-b0f3-47a4-98c8-bd7255d749da"><div style="font-size:1.5em"><img class="icon" src="https://electronjs.org/app-img/left/left-icon-128.png"/></div><div style="width:100%">Left</div></figure><figure id="e9d31e84-82d7-435e-94f0-42bbba7f991f"><div class="bookmark source"><a href="https://opuscule.lectronice.com">Opuscule :: A fragmented text editor</a><br/><a class="bookmark-href" href="https://opuscule.lectronice.com">https://opuscule.lectronice.com</a></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="69b5134b-f6c9-44ae-8f89-36eaf47f6ca3"><div style="font-size:1.5em"><img class="icon" src="http://cdn.onlinewebfonts.com/svg/img_520845.png"/></div><div style="width:100%">Opuscule</div></figure><figure id="b2b361a0-814c-4cb1-9ca6-71d12088b99c"><div class="bookmark source"><a href="https://www.gonitro.com/nps/pro/pdf-software">Download Nitro Pro | The Only PDF Software You Need</a><br/><a class="bookmark-href" href="https://www.gonitro.com/nps/pro/pdf-software">https://www.gonitro.com/nps/pro/pdf-software</a></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="71236ed9-c35a-4acb-8026-b40963a60e1c"><div style="font-size:1.5em"><img class="icon" src="https://rahim-soft.com/wp-content/uploads/2017/07/Nitro_Reader_Icon.png"/></div><div style="width:100%">Nitro Pro</div></figure><figure id="aac86e1e-4df3-415c-ac16-bca5319351e6"><div class="bookmark source"><a href="http://1218.io">Seer</a><br/><a class="bookmark-href" href="http://1218.io">http://1218.io</a></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="dfbbb4a8-a9b4-4094-83a4-0011f803e1d1"><div style="font-size:1.5em"><img class="icon" src="http://1218.io/static/common/icons.svg"/></div><div style="width:100%">Seer</div></figure><figure id="4f3e61d3-8e95-440e-b02a-6dee84b3cb0b"><div class="bookmark source"><a href="https://imageglass.org">Documentation | ImageGlass</a><br/><a class="bookmark-href" href="https://imageglass.org">https://imageglass.org</a></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1df9a3a8-a2ec-4433-b6e1-d878c021b036"><div style="font-size:1.5em"><span class="icon">🛡</span></div><div style="width:100%">ImageGlass</div></figure><figure id="6970053f-7cce-43ee-99ac-f5d1a9398972"><div class="bookmark source"><a href="https://cholaware.com/gsubs/">gSubs - Finds you the perfect subtitle match</a><br/><a class="bookmark-href" href="https://cholaware.com/gsubs/">https://cholaware.com/gsubs/</a></div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="b641f636-03c2-432d-91da-550f2a009ba4"><div style="font-size:1.5em"><img class="icon" src="https://pt.seaicons.com/wp-content/uploads/2015/06/CC-icon.png"/></div><div style="width:100%">gSubs</div></figure><p id="dd1a5112-0585-4bc4-89dd-95219981000f" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="7f071c82-a33c-4309-acbd-37851751b66a"><div style="font-size:1.5em"><img class="icon" src="https://getmusicbee.com/img/musicbee.png"/></div><div style="width:100%">Music Bee</div></figure><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="4ec83e64-c77f-438f-97b2-36761433f8f2"><div style="font-size:1.5em"><img class="icon" src="https://getmusicbee.com/img/musicbee.png"/></div><div style="width:100%">Music Bee</div></figure></div></article></body></html>
